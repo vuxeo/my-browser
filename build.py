@@ -283,7 +283,16 @@ def main():
                 ext_file.write_text(ext_text, encoding=ENCODING)
                 get_logger().info('Injected 1-click extension install support')
 
-        # 4. Copy Aura custom branding icons into Chromium source tree
+        # 4. Enable Cloudflare DoH by default (with full user control in Settings)
+        doh_file = source_tree / 'chrome/browser/net/default_dns_over_https_config_source.cc'
+        if doh_file.exists():
+            doh_text = doh_file.read_text(encoding=ENCODING)
+            if 'net::SecureDnsMode::kOff' in doh_text:
+                doh_text = doh_text.replace('net::SecureDnsMode::kOff', 'net::SecureDnsMode::kAutomatic')
+                doh_file.write_text(doh_text, encoding=ENCODING)
+                get_logger().info('Injected Cloudflare DoH default')
+
+        # 5. Copy Aura custom branding icons into Chromium source tree
         aura_icon = _ROOT_DIR / 'aura-assets' / 'aura-icon.ico'
         aura_png = _ROOT_DIR / 'aura-assets' / 'aura-logo.png'
         if aura_icon.exists():

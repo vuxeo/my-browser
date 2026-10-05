@@ -47,6 +47,7 @@ start "" "%CHROME_EXE%" ^
     --renderer-process-limit=8 ^
     --enable-gpu-rasterization ^
     --enable-zero-copy ^
+    --enable-features=WebContentsForceDark:choice/selective_inversion_only ^
     --fingerprinting-canvas-image-data-noise ^
     --fingerprinting-client-rects-noise ^
     --no-default-browser-check ^

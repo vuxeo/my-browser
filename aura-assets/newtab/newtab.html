@@ -21,7 +21,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      padding: 50px 20px 25px;
+      padding: 40px 20px 20px;
       overflow-x: hidden;
     }
 
@@ -40,13 +40,13 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
     }
 
     .logo-img {
       width: 42px;
       height: 42px;
-      filter: drop-shadow(0 2px 10px rgba(6, 182, 212, 0.35));
+      filter: drop-shadow(0 2px 10px rgba(6, 182, 212, 0.4));
     }
 
     .brand-title {
@@ -62,7 +62,7 @@
     /* Clock */
     .clock-section {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
     }
 
     .clock-time {
@@ -81,30 +81,60 @@
       margin-top: 4px;
     }
 
-    /* Search Bar */
+    /* Search Provider Tabs */
+    .search-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .search-tab-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      color: #8c96a8;
+      padding: 6px 14px;
+      border-radius: 14px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .search-tab-btn:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .search-tab-btn.active {
+      color: #ffffff;
+      background: rgba(6, 182, 212, 0.18);
+      border-color: rgba(6, 182, 212, 0.45);
+      font-weight: 600;
+    }
+
+    /* Search Box */
     .search-box {
       width: 100%;
       max-width: 660px;
       position: relative;
-      margin-bottom: 45px;
+      margin-bottom: 35px;
     }
 
     .search-form {
       display: flex;
       align-items: center;
-      background: rgba(26, 28, 42, 0.75);
-      backdrop-filter: blur(16px);
+      background: #141722;
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 28px;
       padding: 6px 14px 6px 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
       transition: all 0.25s ease;
     }
 
     .search-form:focus-within {
-      border-color: rgba(160, 100, 255, 0.5);
-      box-shadow: 0 10px 35px rgba(138, 75, 255, 0.2), 0 0 0 2px rgba(0, 229, 255, 0.25);
-      background: rgba(30, 33, 50, 0.9);
+      border-color: rgba(6, 182, 212, 0.6);
+      box-shadow: 0 10px 35px rgba(6, 182, 212, 0.15), 0 0 0 2px rgba(6, 182, 212, 0.2);
+      background: #181c2b;
     }
 
     .search-icon {
@@ -120,7 +150,7 @@
       background: transparent;
       border: none;
       outline: none;
-      font-size: 17px;
+      font-size: 16px;
       color: #ffffff;
       padding: 8px 0;
       user-select: text;
@@ -135,7 +165,7 @@
       border: none;
       outline: none;
       color: #fff;
-      padding: 9px 18px;
+      padding: 8px 18px;
       border-radius: 20px;
       font-size: 14px;
       font-weight: 600;
@@ -149,17 +179,22 @@
     }
 
     /* Shortcuts Grid */
-    .shortcuts-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
-      gap: 18px;
+    .shortcuts-wrapper {
       width: 100%;
       max-width: 660px;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
+    }
+
+    .shortcuts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 16px;
+      width: 100%;
     }
 
     .shortcut-card {
-      background: rgba(22, 24, 38, 0.6);
+      position: relative;
+      background: #141722;
       border: 1px solid rgba(255, 255, 255, 0.05);
       border-radius: 16px;
       padding: 16px 10px;
@@ -173,17 +208,17 @@
     }
 
     .shortcut-card:hover {
-      background: rgba(36, 40, 62, 0.85);
-      border-color: rgba(0, 229, 255, 0.3);
+      background: #1c2030;
+      border-color: rgba(6, 182, 212, 0.35);
       transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
       color: #ffffff;
     }
 
     .shortcut-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -201,6 +236,110 @@
       overflow: hidden;
       text-overflow: ellipsis;
       max-width: 85px;
+    }
+
+    .delete-btn {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(255, 50, 50, 0.85);
+      color: white;
+      font-size: 12px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .shortcut-card:hover .delete-btn {
+      display: flex;
+    }
+
+    .add-card {
+      border: 1px dashed rgba(255, 255, 255, 0.15);
+      background: transparent;
+    }
+
+    .add-card:hover {
+      border-color: rgba(6, 182, 212, 0.5);
+      background: rgba(6, 182, 212, 0.05);
+    }
+
+    /* Modal dialog */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+    }
+
+    .modal-box {
+      background: #141724;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 24px;
+      width: 340px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+
+    .modal-input {
+      width: 100%;
+      background: #0b0d13;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      color: #fff;
+      padding: 10px 14px;
+      font-size: 14px;
+      margin-bottom: 12px;
+      outline: none;
+    }
+
+    .modal-input:focus {
+      border-color: #06b6d4;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .modal-btn {
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-cancel {
+      background: rgba(255, 255, 255, 0.08);
+      color: #aaa;
+    }
+
+    .btn-save {
+      background: linear-gradient(135deg, #06b6d4, #8b5cf6);
+      color: #fff;
     }
 
     /* Footer info */
@@ -251,53 +390,56 @@
       <div class="clock-date" id="date">Понедельник, 1 января</div>
     </div>
 
+    <!-- Search Engine Tabs -->
+    <div class="search-tabs">
+      <button class="search-tab-btn active" data-engine="yandex">Яндекс</button>
+      <button class="search-tab-btn" data-engine="google">Google</button>
+      <button class="search-tab-btn" data-engine="duckduckgo">DuckDuckGo</button>
+      <button class="search-tab-btn" data-engine="youtube">YouTube</button>
+    </div>
+
+    <!-- Search Box -->
     <div class="search-box">
       <form class="search-form" id="search-form" action="https://ya.ru/search/" method="get">
         <svg class="search-icon" viewBox="0 0 24 24">
-          <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+          <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 14z"/>
         </svg>
         <input type="text" class="search-input" name="text" id="search-input" placeholder="Поиск в Яндексе или URL..." autocomplete="off" autofocus>
-        <button type="submit" class="search-btn">Найти</button>
+        <button type="submit" class="search-btn" id="search-submit">Найти</button>
       </form>
     </div>
 
-    <div class="shortcuts-grid" id="shortcuts">
-      <a href="https://ya.ru" class="shortcut-card">
-        <div class="shortcut-icon" style="background:#ff3333; color:#fff;">Я</div>
-        <div class="shortcut-title">Яндекс</div>
-      </a>
-      <a href="https://youtube.com" class="shortcut-card">
-        <div class="shortcut-icon" style="background:#ff0000; color:#fff;">▶</div>
-        <div class="shortcut-title">YouTube</div>
-      </a>
-      <a href="https://vk.com" class="shortcut-card">
-        <div class="shortcut-icon" style="background:#0077ff; color:#fff;">В</div>
-        <div class="shortcut-title">VK</div>
-      </a>
-      <a href="https://github.com" class="shortcut-card">
-        <div class="shortcut-icon" style="background:#24292e; color:#fff;">GH</div>
-        <div class="shortcut-title">GitHub</div>
-      </a>
-      <a href="https://web.telegram.org" class="shortcut-card">
-        <div class="shortcut-icon" style="background:#229ed9; color:#fff;">✈</div>
-        <div class="shortcut-title">Telegram</div>
-      </a>
-      <a href="https://kinopoisk.ru" class="shortcut-card">
-        <div class="shortcut-icon" style="background:#ff6600; color:#fff;">КП</div>
-        <div class="shortcut-title">Кинопоиск</div>
-      </a>
+    <!-- Shortcuts Grid -->
+    <div class="shortcuts-wrapper">
+      <div class="shortcuts-grid" id="shortcuts-grid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Bookmark Modal -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal-box">
+      <div class="modal-title">Добавить закладку</div>
+      <input type="text" class="modal-input" id="new-name" placeholder="Название (например, GitHub)">
+      <input type="text" class="modal-input" id="new-url" placeholder="URL (например, https://github.com)">
+      <div class="modal-actions">
+        <button class="modal-btn btn-cancel" id="btn-cancel">Отмена</button>
+        <button class="modal-btn btn-save" id="btn-save">Сохранить</button>
+      </div>
     </div>
   </div>
 
   <footer class="footer">
     <div class="badge-status">
       <span class="status-dot"></span>
-      <span>Aura Shield: Active (Private & No Telemetry)</span>
+      <span>Aura Shield: Active (DoH Cloudflare, Private, No Telemetry)</span>
     </div>
     <div class="mem-badge" id="mem-status">RAM: Оптимизировано</div>
   </footer>
 
   <script>
+    // 1. Clock
     function updateClock() {
       const now = new Date();
       const hours = String(now.getHours()).padStart(2, '0');
@@ -310,7 +452,146 @@
     setInterval(updateClock, 1000);
     updateClock();
 
-    // Check performance memory if exposed
+    // 2. Search Engines
+    const ENGINES = {
+      yandex: { action: 'https://ya.ru/search/', param: 'text', placeholder: 'Поиск в Яндексе или URL...' },
+      google: { action: 'https://www.google.com/search', param: 'q', placeholder: 'Поиск в Google...' },
+      duckduckgo: { action: 'https://duckduckgo.com/', param: 'q', placeholder: 'Поиск в DuckDuckGo...' },
+      youtube: { action: 'https://www.youtube.com/results', param: 'search_query', placeholder: 'Поиск видео на YouTube...' }
+    };
+
+    let currentEngine = 'yandex';
+    const searchForm = document.getElementById('search-form');
+    const searchInput = document.getElementById('search-input');
+    const searchTabs = document.querySelectorAll('.search-tab-btn');
+
+    searchTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        searchTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        currentEngine = tab.dataset.engine;
+        const config = ENGINES[currentEngine];
+        searchForm.action = config.action;
+        searchInput.name = config.param;
+        searchInput.placeholder = config.placeholder;
+        searchInput.focus();
+      });
+    });
+
+    // 3. Shortcuts System (localStorage)
+    const DEFAULT_SHORTCUTS = [
+      { name: 'Яндекс', url: 'https://ya.ru', color: '#ff3333', letter: 'Я' },
+      { name: 'YouTube', url: 'https://youtube.com', color: '#ff0000', letter: '▶' },
+      { name: 'VK', url: 'https://vk.com', color: '#0077ff', letter: 'В' },
+      { name: 'GitHub', url: 'https://github.com', color: '#24292e', letter: 'GH' },
+      { name: 'Telegram', url: 'https://web.telegram.org', color: '#229ed9', letter: '✈' },
+      { name: 'Кинопоиск', url: 'https://kinopoisk.ru', color: '#ff6600', letter: 'КП' }
+    ];
+
+    function getShortcuts() {
+      const saved = localStorage.getItem('aura_shortcuts');
+      if (saved) {
+        try { return JSON.parse(saved); } catch(e) {}
+      }
+      return DEFAULT_SHORTCUTS;
+    }
+
+    function saveShortcuts(list) {
+      localStorage.setItem('aura_shortcuts', JSON.stringify(list));
+      renderShortcuts();
+    }
+
+    const grid = document.getElementById('shortcuts-grid');
+
+    function renderShortcuts() {
+      const list = getShortcuts();
+      grid.innerHTML = '';
+
+      list.forEach((item, index) => {
+        const a = document.createElement('a');
+        a.className = 'shortcut-card';
+        a.href = item.url;
+
+        const del = document.createElement('div');
+        del.className = 'delete-btn';
+        del.textContent = '×';
+        del.title = 'Удалить';
+        del.onclick = (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          list.splice(index, 1);
+          saveShortcuts(list);
+        };
+
+        const icon = document.createElement('div');
+        icon.className = 'shortcut-icon';
+        icon.style.backgroundColor = item.color || '#333';
+        icon.style.color = '#fff';
+        icon.textContent = item.letter || item.name.charAt(0).toUpperCase();
+
+        const title = document.createElement('div');
+        title.className = 'shortcut-title';
+        title.textContent = item.name;
+
+        a.appendChild(del);
+        a.appendChild(icon);
+        a.appendChild(title);
+        grid.appendChild(a);
+      });
+
+      // Add Card button
+      const addCard = document.createElement('div');
+      addCard.className = 'shortcut-card add-card';
+      addCard.onclick = openModal;
+      addCard.innerHTML = `
+        <div class="shortcut-icon" style="background: rgba(255,255,255,0.06); font-size:22px; color:#06b6d4;">+</div>
+        <div class="shortcut-title" style="color:#06b6d4;">Добавить</div>
+      `;
+      grid.appendChild(addCard);
+    }
+
+    // Modal logic
+    const modal = document.getElementById('modal');
+    const inputName = document.getElementById('new-name');
+    const inputUrl = document.getElementById('new-url');
+
+    function openModal() {
+      modal.style.display = 'flex';
+      inputName.value = '';
+      inputUrl.value = 'https://';
+      inputName.focus();
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+    }
+
+    document.getElementById('btn-cancel').onclick = closeModal;
+    document.getElementById('btn-save').onclick = () => {
+      let name = inputName.value.trim();
+      let url = inputUrl.value.trim();
+      if (!url || url === 'https://') return;
+      if (!url.startsWith('http://') && !url.startsWith('https://')) url = 'https://' + url;
+      if (!name) {
+        try { name = new URL(url).hostname.replace('www.', ''); } catch(e) { name = 'Сайт'; }
+      }
+
+      const colors = ['#06b6d4', '#8b5cf6', '#ec4899', '#10b981', '#f59e0b', '#3b82f6'];
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+      const list = getShortcuts();
+      list.push({ name, url, color: randomColor, letter: name.slice(0, 2).toUpperCase() });
+      saveShortcuts(list);
+      closeModal();
+    };
+
+    modal.onclick = (e) => {
+      if (e.target === modal) closeModal();
+    };
+
+    renderShortcuts();
+
+    // 4. Memory check
     if (window.performance && window.performance.memory) {
       const usedMB = Math.round(window.performance.memory.usedJSHeapSize / (1024 * 1024));
       document.getElementById('mem-status').textContent = `JS Heap: ~${usedMB} MB`;
