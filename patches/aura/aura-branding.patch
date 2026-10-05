@@ -1,0 +1,15 @@
+--- a/chrome/app/theme/chromium/BRANDING
++++ b/chrome/app/theme/chromium/BRANDING
+@@ -1,6 +1,6 @@
+-COMPANY_FULLNAME=The Chromium Authors
+-COMPANY_SHORTNAME=The Chromium Authors
+-PRODUCT_FULLNAME_ALL=Chromium
+-PRODUCT_FULLNAME=Chromium
+-PRODUCT_SHORTNAME=Chromium
+-PRODUCT_INSTALLER_FULLNAME=Chromium Installer
++COMPANY_FULLNAME=Aura Browser
++COMPANY_SHORTNAME=Aura
++PRODUCT_FULLNAME_ALL=Aura
++PRODUCT_FULLNAME=Aura
++PRODUCT_SHORTNAME=Aura
++PRODUCT_INSTALLER_FULLNAME=Aura Installer
