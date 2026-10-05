@@ -241,6 +241,30 @@ def main():
             None
         )
 
+        # Copy Aura custom branding icons into Chromium source tree
+        aura_icon = _ROOT_DIR / 'aura-assets' / 'aura-icon.ico'
+        aura_png = _ROOT_DIR / 'aura-assets' / 'aura-logo.png'
+        if aura_icon.exists():
+            for ico_target in [
+                'chrome/app/theme/chromium/win/chrome.ico',
+                'chrome/app/theme/chromium/win/small.ico',
+            ]:
+                dest = source_tree / ico_target
+                if dest.parent.exists():
+                    shutil.copy2(aura_icon, dest)
+                    get_logger().info('Injected Aura icon: %s', ico_target)
+        if aura_png.exists():
+            for png_target in [
+                'chrome/app/theme/chromium/product_logo_128.png',
+                'chrome/app/theme/chromium/product_logo_256.png',
+                'chrome/app/theme/default_100_percent/chromium/product_logo_32.png',
+                'chrome/app/theme/default_200_percent/chromium/product_logo_32.png',
+            ]:
+                dest = source_tree / png_target
+                if dest.parent.exists():
+                    shutil.copy2(aura_png, dest)
+                    get_logger().info('Injected Aura PNG logo: %s', png_target)
+
     # Check if rust-toolchain folder has been populated
     HOST_CPU_IS_64BIT = sys.maxsize > 2**32
     RUST_DIR_DST = source_tree / 'third_party' / 'rust-toolchain'
