@@ -24,6 +24,3 @@ ungoogled-chromium/windows/windows-fix-building-without-crubit.patch
 ungoogled-chromium/windows/windows-fix-python.patch
 ungoogled-chromium/windows/windows-fix-typescript-lib-dom.patch
 ungoogled-chromium/windows/windows-disable-private-verification-tokens.patch
-aura/aura-branding.patch
-aura/aura-default-search-yandex.patch
-aura/aura-extension-install.patch

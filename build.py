@@ -241,7 +241,49 @@ def main():
             None
         )
 
-        # Copy Aura custom branding icons into Chromium source tree
+        # 1. Inject Aura BRANDING
+        branding_file = source_tree / 'chrome/app/theme/chromium/BRANDING'
+        if branding_file.exists():
+            branding_file.write_text(
+                "COMPANY_FULLNAME=Aura Browser\n"
+                "COMPANY_SHORTNAME=Aura\n"
+                "PRODUCT_FULLNAME=Aura\n"
+                "PRODUCT_SHORTNAME=Aura\n"
+                "PRODUCT_INSTALLER_FULLNAME=Aura Installer\n"
+                "PRODUCT_INSTALLER_SHORTNAME=Aura Installer\n"
+                "COPYRIGHT=Copyright @LASTCHANGE_YEAR@ Aura Project. All rights reserved.\n"
+                "MAC_BUNDLE_ID=org.chromium.Chromium\n"
+                "MAC_CREATOR_CODE=Cr24\n"
+                "MAC_TEAM_ID=\n",
+                encoding=ENCODING
+            )
+            get_logger().info('Injected Aura BRANDING')
+
+        # 2. Inject Yandex default search engine
+        engine_file = source_tree / 'third_party/search_engines_data/resources/definitions/prepopulated_engines.json'
+        if engine_file.exists():
+            text = engine_file.read_text(encoding=ENCODING)
+            text = text.replace('"name": "No Search"', '"name": "Yandex"')
+            text = text.replace('"keyword": "nosearch"', '"keyword": "ya.ru"')
+            text = text.replace('"favicon_url": "about:blank"', '"favicon_url": "https://yandex.ru/favicon.ico"')
+            text = text.replace('"search_url": "http://{searchTerms}"', 
+                                '"search_url": "https://ya.ru/search/?text={searchTerms}",\n      "suggest_url": "https://suggest.yandex.ru/suggest-ya.cgi?v=4&part={searchTerms}"')
+            text = text.replace('"new_tab_url": "about:blank"', '"new_tab_url": "https://ya.ru"')
+            engine_file.write_text(text, encoding=ENCODING)
+            get_logger().info('Injected Yandex default search engine')
+
+        # 3. Allow 1-click extension installs
+        ext_file = source_tree / 'chrome/browser/extensions/extension_management.cc'
+        if ext_file.exists():
+            ext_text = ext_file.read_text(encoding=ENCODING)
+            old_str = 'if (command_line.HasSwitch("extension-mime-request-handling") &&\n      command_line.GetSwitchValueASCII("extension-mime-request-handling") ==\n      "always-prompt-for-install")'
+            new_str = 'if (!command_line.HasSwitch("extension-mime-request-handling") ||\n      command_line.GetSwitchValueASCII("extension-mime-request-handling") ==\n      "always-prompt-for-install")'
+            if old_str in ext_text:
+                ext_text = ext_text.replace(old_str, new_str)
+                ext_file.write_text(ext_text, encoding=ENCODING)
+                get_logger().info('Injected 1-click extension install support')
+
+        # 4. Copy Aura custom branding icons into Chromium source tree
         aura_icon = _ROOT_DIR / 'aura-assets' / 'aura-icon.ico'
         aura_png = _ROOT_DIR / 'aura-assets' / 'aura-logo.png'
         if aura_icon.exists():
